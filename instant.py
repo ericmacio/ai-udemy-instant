@@ -1,15 +1,8 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from openai import OpenAI
-from dotenv import load_dotenv
-import os
-
-load_dotenv(override=True)
-openai_api_key = os.getenv('OPENAI_API_KEY')
 
 def instant():
-    if openai_api_key is None:
-        return f"<html><head><title>Error</title></head><body><p>OpenAI API key not found</p></body></html>"
     client = OpenAI()
     message = """
 You are on a website that has just been deployed to production for the first time!
